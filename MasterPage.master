@@ -1,0 +1,147 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>DoctorDeases</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/foundation.min.css" type="text/css">
+<link rel="stylesheet" href="css/superfish.css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="js/slider/flexslider.css" type="text/css" media="screen">
+<link rel="stylesheet" href="js/slider/testimonialslider.css" type="text/css" media="screen">
+<link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption|Open+Sans' rel='stylesheet' type='text/css'>
+<script src="js/vendor/custom.modernizr.js"></script>
+<script>
+    Modernizr.load({
+        // test if browser understands media queries
+        test: Modernizr.mq('only all'),
+        // if not load ie8-grid
+        nope: 'css/ie8-grid-foundation-4.css'
+    });
+</script>
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="css/ie-fixes.css">
+<![endif]-->
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+<div class="call top-call-to-action">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="social-icons">
+        <ul>
+          <li><a href="#">t</a></li>
+          <li><a href="#">f</a></li>
+          <li><a href="#">y</a></li>
+          <li><a href="#">p</a></li>
+          <li><a href="#">d</a></li>
+        </ul>
+      </div>
+      <span>1800809000</span> </div>
+  </div>
+</div>
+<div class="header">
+  <div class="row">
+    <div class="large-12 twelve columns">
+      <div class="logo"><a href="Index.aspx"> <img src="images/logo3.png" alt=""></a> </div>
+    </div>
+  </div>
+</div>
+<div class="topmenu">
+  <div class="row">
+    <div class="large-12 twelve columns hide-for-small">
+      <ul class="sf-menu">
+        <li><a href="Index.aspx">Home</a></li>
+        <li><a href="SearchDr.aspx">Search Doctor</a></li>
+        <li><a href="Deases.aspx">Deases</a></li>
+        <li><a href="ContactUs.aspx">Contact Us</a></li>
+       
+        <li><a href="AboutUs.aspx">About Us</a></li>
+         <li><a href="#">Sign In/Register</a>
+          <ul class="dropdown">
+            <li><a href="LogIn/DlogIn.aspx">Doctor</a></li>
+            <li><a href="LogIn/Plogin.aspx">Patient</a></li>
+            <li><a href="LogIn/DlogIn.aspx">Admin &rarr;</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="large-12 twelve columns show-for-small">
+      <form name="dropdown" action="#">
+        <select name="selected" id="target" accesskey="E" onChange="goToNewPage(document.dropdown.selected)">
+          <option value="Index.aspx">Home</option>
+          <option value="">Search Doctor</option>
+          <option value="Deases.aspx">Deases</option>
+          <option value="  ">Contact Us</option>
+
+          <option value="">About Us</option>
+          <option value="#">Sign In/Register</option>
+
+        </select>
+      </form>
+    </div>
+  </div>
+</div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+<div class="footer">
+  
+  <div class="theme-credits">
+    <p>&copy; 2045 All rights reserved by <a href="#">Forte.</a> Design by: <a href="http://topwebsitetemplates.org">topwebsitetemplates.org</a></p>
+  </div>
+</div>
+<div id="recaptcha_container"></div>
+<script src="js/jquery.min.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/slider/jquery.flexslider.js"></script>
+<script src="js/slider/jquery.testimonialslider.js"></script>
+<script>
+    Modernizr.load({
+        test: Modernizr.placeholder,
+        nope: 'js/placeholder.min.js'
+    });
+    function goToNewPage() {
+        if (document.getElementById('target').value) {
+            window.location.href = document.getElementById('target').value;
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $('ul.sf-menu').superfish({
+            animation: {
+                height: 'show'
+            },
+            delay: 400
+        });
+        $('.flexslider').flexslider({
+            animation: "slide"
+        });
+        $('.testimonialslider').testimonialslider({
+            animation: "fade",
+            animationLoop: false,
+            itemMargin: 50,
+            itemMargin: 0,
+            maxItems: 1,
+            after: function (slider) {
+                var currentSlide = parseInt(slider.currentSlide);
+                var currentSlide = parseInt(slider.currentSlide);
+                var currentSlideHeight = $('.testimonialslider ul.slides').find('li').eq(currentSlide).css('height');
+                $('.testimonialslider ul.slides').animate({
+                    height: currentSlideHeight
+                }, 100);
+            }
+        });
+    });
+</script>
+    </form>
+</body>
+</html>
